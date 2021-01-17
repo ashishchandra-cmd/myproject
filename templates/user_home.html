@@ -1,0 +1,89 @@
+{% extends 'base.html'%}
+{% block body_login %}{% endblock%}
+{% block body_signup %}{% endblock%}
+{% block body_block %}
+
+<div class="row">
+   <div class="col-4 jumbotron ">
+    <ul class="list-group">
+      <li class="list-group-item"><a  href="" >Board create</a></li>
+      <li class="list-group-item"><a href="">Templates</a></li>
+      <li class="list-group-item"><a href="">Home</a></li>
+    </ul>
+  
+    <table class="table">
+      <tr>
+      <th>Team</th>
+      <th></th>
+      <th ><a href="{% url 'team_create'%}" class=""> CREATE TEAM</a></th>
+      </tr>{% for z in team_data%}
+      <tr>
+        <td>
+          <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              {{z}}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Board</a>
+              <a class="dropdown-item" href="#">settings</a>
+              <a class="dropdown-item" href="#">Members</a>
+            </div>
+          </div>
+           </td>  <br> 
+      </tr>{% endfor %}
+      <br> 
+    </table>  
+     </div>
+   
+  
+   <div class="col-8"  >
+     <div class="row">
+       <div class="col-12">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home">Team</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu1">Boards</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu2">Members</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu3">settings</a>
+      </li>
+    </ul>
+    
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane container active" id="home">
+        {% for z in team_data%}
+       <li> 
+        <div class="dropdown">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            {{z}}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Board</a>
+            <a class="dropdown-item" href="#">settings</a>
+            <a class="dropdown-item" href="#">Members</a>
+          </div>
+        </div>
+      </li>
+        {% endfor %}</div>
+      <div class="tab-pane container fade" id="menu1">
+        {% for y in board_data%}
+       
+       <li>{{y.team}}</li>
+       {% endfor %}
+       <li><a href="{% url 'board_create'%}" class="btn btn-primary">Baord Create</a></li>
+      </div>
+      <div class="tab-pane container fade" id="menu2">...</div>
+      <div class="tab-pane container fade" id="menu3">...</div>
+    </div>  
+   
+  </div>
+  </div>
+   </div>
+  </div>
+{% endblock %}

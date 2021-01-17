@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% block body_login %}{% endblock%}
+{% block body_signup %}{% endblock%}
+{% block body_block %}
+   
+   
+<div class="jumbotron" style="width: 50%; margin: auto;">
+<form action="" method="post" id="team_form" class="mt-4 ml-4" novalidate> 
+    {% csrf_token %}
+    <div>      
+            <div class="form-row field-team_name">                
+                    <div>                       
+                            <label class="required" for="id_team_name">Team name:</label>
+                            
+                                <input type="text" name="team_name" class="vTextField" maxlength="200" required id="id_team_name">                           
+                    </div>
+                
+            </div>       
+            <div class="form-row field-team_type">            
+         <div>                  
+         <label class="required" for="id_team_type">Team type:</label>    
+        <div class="related-widget-wrapper">
+        <select name="team_type" required id="id_team_type">
+            <option value="" selected>---------</option>
+           {% for x in team_type_data%}
+           <option value="{{x.team_type_name}}" >{{x.team_type_name}}</option>
+           {% endfor %}
+        </select>         
+        </div>                        
+         </div>           
+            </div>
+        
+    <div class="form-row field-team_description">
+     <div>
+      <label class="required" for="id_team_description">Team description:</label>
+    <textarea name="team_description" cols="10" rows="3" class="vLargeTextField" required id="id_team_description"></textarea>
+    </div>
+    </div>
+    
+    <div class="submit-row">
+    
+    <input type="submit" value="Save" class="default" name="_save">
+    
+    </div>
+    </div>
+    <a class="btn btn-secondary "  href="{% url 'user_home'%}">Cancle</a>
+    </form>
+   </div>
+    {% endblock %}

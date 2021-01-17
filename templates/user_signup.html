@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block body_login %}{% endblock %}
+{% block body_signup %}{% endblock%}
+{% block body_logout %}  {% endblock %}
+
+
+   {% block body_block %}
+   <div class="jumbotron mt-3" style="width: 50%; margin: auto;">
+  <div class="container mt-3 ">
+     <form action="" method="POST">
+         {% csrf_token%}
+         {{form.as_p}}
+         <button type="submit" class="btn btn-primary">SignUp</button>
+         <a class="btn btn-secondary "  href="{% url 'index_view'%}">Back</a>
+     </form>
+     
+    </div>
+    
+    </div>
+     
+    {% endblock%}
